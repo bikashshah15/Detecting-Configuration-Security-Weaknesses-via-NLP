@@ -1,0 +1,13 @@
+https://github.com/stackrox/kube-linter.git
+https://github.com/argoproj/argo-cd.git
+https://github.com/elastic/cloud-on-k8s.git
+https://github.com/grafana/k8s-monitoring-helm.git
+https://github.com/prometheus-operator/prometheus-operator.git
+https://github.com/kubernetes/examples.git
+https://github.com/kubernetes-native-testbed/kubernetes-native-testbed.git
+https://github.com/bitnami/charts.git
+https://github.com/prometheus-community/helm-charts.git
+https://github.com/grafana/helm-charts.git
+https://github.com/nginxinc/kubernetes-ingress.git
+https://github.com/BishopFox/badPods.git
+https://github.com/madhuakula/kubernetes-goat.git
