@@ -1,0 +1,2083 @@
+{
+  "summary": {
+    "total_files_scanned": 2953,
+    "flagged_files": 76,
+    "clean_files": 2877,
+    "total_issues": 281,
+    "rules_checked": [
+      "privileged",
+      "hostNetwork",
+      "hostPID",
+      "dockerSockMount",
+      "allowPrivilegeEscalation"
+    ]
+  },
+  "findings": {
+    "argo-cd__resource_customizations_apps.kruise.io_DaemonSet_testdata_no-update-strategy-partition.yaml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "DaemonSet/nvidia-gpu/rdma-device-plugin",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        }
+      ]
+    },
+    "cloud-on-k8s__hack_deployer_config_local-disks_ssd-provisioner.yaml": {
+      "issue_count": 3,
+      "issues": [
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[3]:DaemonSet/default/local-volume-provisioner.containers[provisioner].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[3]:DaemonSet/default/local-volume-provisioner.initContainers[disk-format].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[3]:DaemonSet/default/local-volume-provisioner.initContainers[disk-mounts].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "examples___archived_newrelic-infrastructure_newrelic-infra-daemonset.yaml": {
+      "issue_count": 5,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "DaemonSet/default/newrelic-infra-agent",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "DaemonSet/default/newrelic-infra-agent",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "dockerSockMount",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/newrelic-infra-agent.volumes[run]",
+          "detail": "Volume exposes /var/run/docker.sock \u2014 grants full Docker daemon access, enabling container escape."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/newrelic-infra-agent.containers[newrelic].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "dockerSockMount",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/newrelic-infra-agent.containers[newrelic].volumeMounts[run]",
+          "detail": "Container mounts /var/run/docker.sock \u2014 grants direct access to the Docker daemon, allowing container escape."
+        }
+      ]
+    },
+    "examples___archived_newrelic_newrelic-daemonset.yaml": {
+      "issue_count": 5,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "DaemonSet/default/newrelic-agent",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "DaemonSet/default/newrelic-agent",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "dockerSockMount",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/newrelic-agent.volumes[run]",
+          "detail": "Volume exposes /var/run/docker.sock \u2014 grants full Docker daemon access, enabling container escape."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/newrelic-agent.containers[newrelic].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "dockerSockMount",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/newrelic-agent.containers[newrelic].volumeMounts[run]",
+          "detail": "Container mounts /var/run/docker.sock \u2014 grants direct access to the Docker daemon, allowing container escape."
+        }
+      ]
+    },
+    "examples___archived_podsecuritypolicy_rbac_pod_priv.yaml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "Pod/default/nginx.containers[nginx].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "examples___archived_sysdig-cloud_sysdig-daemonset.yaml": {
+      "issue_count": 5,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "DaemonSet/default/sysdig-agent",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "DaemonSet/default/sysdig-agent",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "dockerSockMount",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/sysdig-agent.volumes[docker-sock]",
+          "detail": "Volume exposes /var/run/docker.sock \u2014 grants full Docker daemon access, enabling container escape."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/sysdig-agent.containers[sysdig-agent].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "dockerSockMount",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/sysdig-agent.containers[sysdig-agent].volumeMounts[docker-sock]",
+          "detail": "Container mounts /var/run/docker.sock \u2014 grants direct access to the Docker daemon, allowing container escape."
+        }
+      ]
+    },
+    "examples___archived_volumes_flexvolume_deploy_ds.yaml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "DaemonSet/default/flex-ds.containers[flex-deploy].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "examples___archived_volumes_nfs_nfs-server-deployment.yaml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "Deployment/default/nfs-server.containers[nfs-server].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring-v1_tests_integration_test-1_.rendered_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[36]:DaemonSet/default/k8smon-alloy-profiles",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[36]:DaemonSet/default/k8smon-alloy-profiles.containers[alloy].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[37]:DaemonSet/default/k8smon-prometheus-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[37]:DaemonSet/default/k8smon-prometheus-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring-v1_tests_integration_test-2_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[27]:DaemonSet/default/k8smon-prometheus-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[27]:DaemonSet/default/k8smon-prometheus-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring-v1_tests_integration_test-integrations_.rendered_output.yaml": {
+      "issue_count": 7,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[32]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[33]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-prometheus-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-prometheus-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_auth_oauth2_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[23]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[23]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_collector-storage_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_deployment-alternatives_helmfile_.rendered_output.yaml": {
+      "issue_count": 6,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[30]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[30]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[31]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[31]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_destinations_otlp-endpoint_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_exclude-by-namespace_output.yaml": {
+      "issue_count": 5,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[24]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[24]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[24]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_extra-rules_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_features_auto-instrumentation_beyla-metrics-and-traces_output.yaml": {
+      "issue_count": 3,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_features_auto-instrumentation_beyla-metrics_output.yaml": {
+      "issue_count": 3,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_features_auto-instrumentation_discovery-rules_output.yaml": {
+      "issue_count": 3,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_features_auto-instrumentation_span-metrics-only_output.yaml": {
+      "issue_count": 3,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[15]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_features_cluster-metrics_control-plane-monitoring_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_features_host-metrics_default_output.yaml": {
+      "issue_count": 6,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[19]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_images_images-by-digest_output.yaml": {
+      "issue_count": 9,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[34]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[36]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[36]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_include-by-namespace_output.yaml": {
+      "issue_count": 7,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[29]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[29]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[29]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[30]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[30]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[31]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[31]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_instrumentation-hub_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[16]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[16]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_istio-service-mesh_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[24]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[24]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_meta-monitoring_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[16]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[16]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_metric-enrichment_namespace-and-pod-labels_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_metric-enrichment_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_metrics-tuning_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[16]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[16]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_name-overrides_fullname-overrides_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[24]:DaemonSet/default/energy-metric-source",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[24]:DaemonSet/default/energy-metric-source.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/node-metric-source",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/node-metric-source",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_name-overrides_name-overrides_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[24]:DaemonSet/default/k8smon-energy-metric-source",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[24]:DaemonSet/default/k8smon-energy-metric-source.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/k8smon-node-metric-source",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/k8smon-node-metric-source",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_namespace-labels-and-annotations_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_node-labels_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_platforms_azure-aks_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_platforms_openshift_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[24]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[24]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_pod-labels-and-annotations_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_private-image-registries_globally_output.yaml": {
+      "issue_count": 6,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[29]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[29]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[30]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[30]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[31]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[31]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_private-image-registries_individual_output.yaml": {
+      "issue_count": 9,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[34]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[36]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[36]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_proxies_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[27]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[27]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[28]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[28]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_rbac-no-cluster-roles_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[23]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[23]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_resource-requests-and-limits_output.yaml": {
+      "issue_count": 9,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[32]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[33]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_scalability_autoscaling_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_scalability_high-availability-kube-state-metrics_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_scalability_sharded-kube-state-metrics_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_tail-sampling_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_tolerations_output.yaml": {
+      "issue_count": 9,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[33]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[34]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[36]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[36]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_auto-instrumentation_.rendered_output.yaml": {
+      "issue_count": 3,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[17]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[17]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[17]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_cluster-monitoring_.rendered_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[28]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[28]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[29]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[29]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_control-plane-monitoring_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[19]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_prom-and-loki-to-otlp_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_prometheus-io-annotations_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[12]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[12]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_service-integrations_grafana_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_service-integrations_loki_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_service-integrations_tempo_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[20]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_sharded-kube-state-metrics_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[18]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[18]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_split-destinations_.rendered_output.yaml": {
+      "issue_count": 5,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[27]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[27]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[27]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[28]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[28]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_uninstall_.rendered_output.yaml": {
+      "issue_count": 6,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[31]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[31]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_upgrade_minor_.rendered_output.yaml": {
+      "issue_count": 6,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[32]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_integration_upgrade_patch_.rendered_output.yaml": {
+      "issue_count": 6,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[32]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[32]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[33]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[34]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_platform_aks_.rendered_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_platform_eks-fargate_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[18]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[18]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_platform_eks-with-windows_.rendered_output.yaml": {
+      "issue_count": 4,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[21]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_platform_gke_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[22]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_platform_gpu_.rendered_output.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[16]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[16]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_platform_grafana-cloud_k8s-monitoring_.rendered_output.yaml": {
+      "issue_count": 9,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[35]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[35]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[36]:DaemonSet/default/k8smon-kepler",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[36]:DaemonSet/default/k8smon-kepler.containers[kepler-exporter].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[37]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[37]:DaemonSet/default/k8smon-node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[38]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[38]:DaemonSet/default/k8smon-windows-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "k8s-monitoring-helm__charts_k8s-monitoring_tests_platform_openshift_.rendered_output.yaml": {
+      "issue_count": 3,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[25]:DaemonSet/default/k8smon-beyla",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        },
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[25]:DaemonSet/default/k8smon-beyla.containers[beyla].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "kube-linter__tests_checks_docker-sock.yml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "dockerSockMount",
+          "severity": "CRITICAL",
+          "location": "doc[2]:Deployment/default/app.volumes[dockersock]",
+          "detail": "Volume exposes /var/run/docker.sock \u2014 grants full Docker daemon access, enabling container escape."
+        },
+        {
+          "rule": "dockerSockMount",
+          "severity": "CRITICAL",
+          "location": "doc[2]:Deployment/default/app.containers[app].volumeMounts[dockersock]",
+          "detail": "Container mounts /var/run/docker.sock \u2014 grants direct access to the Docker daemon, allowing container escape."
+        }
+      ]
+    },
+    "kube-linter__tests_checks_host-network.yml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[2]:Deployment/default/app",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        }
+      ]
+    },
+    "kube-linter__tests_checks_host-pid.yml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[2]:Deployment/default/app",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    },
+    "kube-linter__tests_checks_privilege-escalation-container.yml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "allowPrivilegeEscalation",
+          "severity": "HIGH",
+          "location": "doc[2]:Deployment/default/app1.containers[app].securityContext",
+          "detail": "allowPrivilegeEscalation: true \u2014 process inside the container can gain more privileges than its parent process."
+        }
+      ]
+    },
+    "kube-linter__tests_checks_privileged-container.yml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[2]:Deployment/default/app1.containers[app].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "kube-linter__tests_testdata_splunk.yaml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "privileged",
+          "severity": "CRITICAL",
+          "location": "doc[1]:Deployment/splunk-ns/splunk.containers[splunk].securityContext",
+          "detail": "privileged: true \u2014 container runs with full host root privileges, equivalent to running as root on the node."
+        }
+      ]
+    },
+    "kubernetes-native-testbed__manifests_infra_nginx-ingress_nginx-ingress.yaml": {
+      "issue_count": 1,
+      "issues": [
+        {
+          "rule": "allowPrivilegeEscalation",
+          "severity": "HIGH",
+          "location": "doc[8]:Deployment/infra/infra-nginx-ingress-controller.containers[nginx-ingress-controller].securityContext",
+          "detail": "allowPrivilegeEscalation: true \u2014 process inside the container can gain more privileges than its parent process."
+        }
+      ]
+    },
+    "kubernetes-native-testbed__manifests_infra_prometheus-operator_instance.yaml": {
+      "issue_count": 2,
+      "issues": [
+        {
+          "rule": "hostNetwork",
+          "severity": "HIGH",
+          "location": "doc[45]:DaemonSet/monitoring/node-exporter",
+          "detail": "hostNetwork: true \u2014 pod shares the host network namespace, exposing all host network interfaces and services."
+        },
+        {
+          "rule": "hostPID",
+          "severity": "HIGH",
+          "location": "doc[45]:DaemonSet/monitoring/node-exporter",
+          "detail": "hostPID: true \u2014 pod can see and signal all processes on the host."
+        }
+      ]
+    }
+  }
+}
