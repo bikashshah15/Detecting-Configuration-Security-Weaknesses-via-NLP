@@ -2,18 +2,13 @@ import os
 import json
 import yaml
 
-# Rule-based security parser for kubernetes ymal manifests
-# Reads the content of k8s_yaml_only 
-# Writes the finding to security_report.json
 
-# Directory output of filter_k8s_yml
 INPUT_DIR = "k8s_yaml_only"
-# Output where JSON security report written
+
 OUTPUT_FILE = "security_report.json"
 
 DOCKER_SOCK_PATH = "/var/run/docker.sock"
 
-# All the rules id that parser checks
 RULES_CHECKED = [
     "privileged",
     "hostNetwork",
@@ -70,7 +65,6 @@ def check_pod_spec(pod_spec, issues, location):
             "detail": "hostPID: true — pod can see and signal all processes on the host.",
         })
 
-    # Check volumes for docker socket host path
     for vol in pod_spec.get("volumes") or []:
         host_path = vol.get("hostPath") or {}
         if isinstance(host_path, dict) and DOCKER_SOCK_PATH in host_path.get("path", ""):
@@ -82,7 +76,6 @@ def check_pod_spec(pod_spec, issues, location):
                           "access, enabling container escape.",
             })
 
-    # Check containers and initContainers
     for section in ("containers", "initContainers"):
         for container in pod_spec.get(section) or []:
             if not isinstance(container, dict):
@@ -114,7 +107,6 @@ def check_container(container, issues, location):
                       "gain more privileges than its parent process.",
         })
 
-    # Check volumeMounts for docker socket
     for vm in container.get("volumeMounts") or []:
         if DOCKER_SOCK_PATH in (vm.get("mountPath") or ""):
             issues.append({
@@ -148,7 +140,6 @@ def analyze_file(filepath):
         name = metadata.get("name", "unknown")
         namespace = metadata.get("namespace", "default")
 
-        # location prefix
         loc = f"{kind}/{namespace}/{name}"
         if len(docs) > 1:
             loc = f"doc[{i}]:{loc}"
