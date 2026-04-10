@@ -2,11 +2,18 @@ import os
 import json
 import yaml
 
+# Rule-based security parser for kubernetes ymal manifests
+# Reads the content of k8s_yaml_only 
+# Writes the finding to security_report.json
+
+# Directory output of filter_k8s_yml
 INPUT_DIR = "k8s_yaml_only"
+# Output where JSON security report written
 OUTPUT_FILE = "security_report.json"
 
 DOCKER_SOCK_PATH = "/var/run/docker.sock"
 
+# All the rules id that parser checks
 RULES_CHECKED = [
     "privileged",
     "hostNetwork",
@@ -18,8 +25,8 @@ RULES_CHECKED = [
 
 def get_pod_specs(doc):
     """
-    Extract pod spec(s) from a Kubernetes resource document.
-    Handles: Pod, Deployment, DaemonSet, StatefulSet, ReplicaSet, Job, CronJob.
+    Extract pod specs from available Kubernetes resource document.
+    Handles: Pod, Deployment, DaemonSet, StatefulSet, ReplicaSet, Job, and CronJob.
     """
     kind = doc.get("kind", "")
     spec = doc.get("spec") or {}
@@ -44,7 +51,7 @@ def get_pod_specs(doc):
 
 
 def check_pod_spec(pod_spec, issues, location):
-    """Check pod-level security fields and delegate to container checks."""
+    """Check pod level security fields and delegate to container checks."""
 
     if pod_spec.get("hostNetwork") is True:
         issues.append({
@@ -85,7 +92,7 @@ def check_pod_spec(pod_spec, issues, location):
 
 
 def check_container(container, issues, location):
-    """Check container-level security context and volume mounts."""
+    """Check container level security context and volume mount """
 
     sec_ctx = container.get("securityContext") or {}
 
@@ -121,8 +128,8 @@ def check_container(container, issues, location):
 
 def analyze_file(filepath):
     """
-    Parse a YAML file (single or multi-document) and return all detected issues.
-    Returns a list of issue dicts, empty list if no issues found.
+    Parse a YAML file either single or multi-document; and return all detected issues.
+    Returns a list of issue dicts and empty list if no issues are found.
     """
     issues = []
 
@@ -141,7 +148,7 @@ def analyze_file(filepath):
         name = metadata.get("name", "unknown")
         namespace = metadata.get("namespace", "default")
 
-        # Build a human-readable location prefix
+        # location prefix
         loc = f"{kind}/{namespace}/{name}"
         if len(docs) > 1:
             loc = f"doc[{i}]:{loc}"
@@ -197,8 +204,8 @@ def main():
         json.dump(output, f, indent=2)
 
     print(f"Scan complete.")
-    print(f"  Files scanned : {total_files}")
-    print(f"  Files flagged : {flagged_files}")
+    print(f"  Total Files scanned : {total_files}")
+    print(f"  Total Files flagged : {flagged_files}")
     print(f"  Total issues  : {total_issues}")
     print(f"  Report saved  : {OUTPUT_FILE}")
 
