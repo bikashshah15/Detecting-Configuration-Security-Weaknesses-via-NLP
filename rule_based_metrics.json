@@ -1,0 +1,90 @@
+{
+  "input_report_summary": {
+    "total_files": 2949,
+    "flagged_files": 490,
+    "clean_files": 2459,
+    "by_label": {
+      "privilege_exposure": 102,
+      "hardcoded_secret": 388,
+      "secure": 2459
+    },
+    "by_severity": {
+      "CRITICAL": 36,
+      "HIGH": 40,
+      "MEDIUM": 404,
+      "NONE": 2469
+    },
+    "total_structural_issues": 281,
+    "total_hardcoded_secret_findings": 1366
+  },
+  "evaluation_summary": {
+    "num_ground_truth_files": 2949,
+    "num_prediction_files": 2949,
+    "num_aligned_files": 2949,
+    "num_label_mismatches": 292,
+    "num_missing_predictions": 0,
+    "num_missing_ground_truth": 0,
+    "accuracy": 0.901
+  },
+  "labels": [
+    "hardcoded_secret",
+    "privilege_exposure",
+    "secure"
+  ],
+  "per_class_metrics": {
+    "hardcoded_secret": {
+      "precision": 0.6856,
+      "recall": 0.6717,
+      "f1": 0.6786,
+      "support": 396,
+      "tp": 266,
+      "fp": 122,
+      "fn": 130
+    },
+    "privilege_exposure": {
+      "precision": 1.0,
+      "recall": 0.6415,
+      "f1": 0.7816,
+      "support": 159,
+      "tp": 102,
+      "fp": 0,
+      "fn": 57
+    },
+    "secure": {
+      "precision": 0.9309,
+      "recall": 0.9561,
+      "f1": 0.9433,
+      "support": 2394,
+      "tp": 2289,
+      "fp": 170,
+      "fn": 105
+    }
+  },
+  "macro_avg": {
+    "precision": 0.8722,
+    "recall": 0.7564,
+    "f1": 0.8012
+  },
+  "weighted_avg": {
+    "precision": 0.9017,
+    "recall": 0.9009,
+    "f1": 0.899
+  },
+  "confusion_matrix": {
+    "hardcoded_secret": {
+      "hardcoded_secret": 266,
+      "privilege_exposure": 0,
+      "secure": 130
+    },
+    "privilege_exposure": {
+      "hardcoded_secret": 17,
+      "privilege_exposure": 102,
+      "secure": 40
+    },
+    "secure": {
+      "hardcoded_secret": 105,
+      "privilege_exposure": 0,
+      "secure": 2289
+    }
+  }
+}
