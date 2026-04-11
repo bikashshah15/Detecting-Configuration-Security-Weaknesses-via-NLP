@@ -192,7 +192,7 @@ def main():
     }
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2)
+        json.dump(output, f, indent=2, ensure_ascii=False)
 
     print(f"Scan complete.")
     print(f"  Total Files scanned : {total_files}")
