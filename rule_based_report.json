@@ -2118,15 +2118,10 @@
   },
   {
     "file_name": "argo-cd__gitops-engine_pkg_health_testdata_daemonset-ondelete.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -15050,45 +15045,30 @@
   },
   {
     "file_name": "argo-cd__resource_customizations_ocs.openshift.io_StorageCluster_testdata_available.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "HostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "argo-cd__resource_customizations_ocs.openshift.io_StorageCluster_testdata_degraded.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "HostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "argo-cd__resource_customizations_ocs.openshift.io_StorageCluster_testdata_progressing.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "HostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -21921,15 +21901,10 @@
   },
   {
     "file_name": "charts__bitnami_cloudnative-pg_crds_postgresql.cnpg.io_poolers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -22016,15 +21991,10 @@
   },
   {
     "file_name": "charts__bitnami_envoy-gateway_crds_gateway.envoyproxy.io_envoyproxies.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -22081,15 +22051,10 @@
   },
   {
     "file_name": "charts__bitnami_grafana-k6-operator_crds_k6.io_testruns.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -22206,15 +22171,10 @@
   },
   {
     "file_name": "charts__bitnami_grafana-operator_crds_grafana.integreatly.org_grafanas.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -22461,15 +22421,10 @@
   },
   {
     "file_name": "charts__bitnami_kube-prometheus_charts_kube-prometheus-crds_crds_crd-alertmanagers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -22506,30 +22461,20 @@
   },
   {
     "file_name": "charts__bitnami_kube-prometheus_charts_kube-prometheus-crds_crds_crd-prometheusagents.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "charts__bitnami_kube-prometheus_charts_kube-prometheus-crds_crds_crd-prometheuses.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -22566,75 +22511,50 @@
   },
   {
     "file_name": "charts__bitnami_kube-prometheus_charts_kube-prometheus-crds_crds_crd-thanosrulers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "charts__bitnami_kuberay_crds_ray.io_rayclusters.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "charts__bitnami_kuberay_crds_ray.io_rayjobs.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "charts__bitnami_kuberay_crds_ray.io_rayservices.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "charts__bitnami_minio-operator_crds_minio.min.io_tenants.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -22919,15 +22839,10 @@
   },
   {
     "file_name": "charts__bitnami_rabbitmq-cluster-operator_crds_rabbitmq-cluster_rabbitmq.com_rabbitmqclusters.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -23004,45 +22919,30 @@
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_agent.k8s.elastic.co_agents.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_apm.k8s.elastic.co_apmservers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_autoops.k8s.elastic.co_autoopsagentpolicies.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -23059,30 +22959,20 @@
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_beat.k8s.elastic.co_beats.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_elasticsearch.k8s.elastic.co_elasticsearches.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -23099,75 +22989,50 @@
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_enterprisesearch.k8s.elastic.co_enterprisesearches.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_kibana.k8s.elastic.co_kibanas.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_logstash.k8s.elastic.co_logstashes.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_maps.k8s.elastic.co_elasticmapsservers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "cloud-on-k8s__config_crds_v1_resources_packageregistry.k8s.elastic.co_packageregistries.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -23184,15 +23049,10 @@
   },
   {
     "file_name": "cloud-on-k8s__config_dev_registry.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -23291,15 +23151,10 @@
   },
   {
     "file_name": "cloud-on-k8s__config_recipes_autopilot_kubernetes-integration.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 1,
@@ -23546,10 +23401,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -23579,10 +23430,6 @@
         {
           "rule": "host_network_true",
           "match": "hostNetwork: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -23612,10 +23459,6 @@
         {
           "rule": "host_network_true",
           "match": "hostNetwork: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -23645,10 +23488,6 @@
         {
           "rule": "host_network_true",
           "match": "hostNetwork: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -23688,10 +23527,6 @@
         {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -23734,10 +23569,6 @@
         {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -23828,10 +23659,6 @@
         {
           "rule": "host_network_true",
           "match": "hostNetwork: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -23897,15 +23724,10 @@
   },
   {
     "file_name": "cloud-on-k8s__config_recipes_elastic-agent_fleet-custom-logs-integration.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 2,
@@ -24012,10 +23834,6 @@
         {
           "rule": "host_network_true",
           "match": "hostNetwork: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -24304,10 +24122,6 @@
         {
           "rule": "host_network_true",
           "match": "hostNetwork: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -24741,10 +24555,6 @@
         {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -25396,10 +25206,6 @@
         {
           "rule": "privileged_true",
           "match": "privileged: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -27703,15 +27509,10 @@
   },
   {
     "file_name": "examples__AI_model-serving-tensorflow_pv.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -28178,16 +27979,8 @@
           "match": "hostPID: true"
         },
         {
-          "rule": "host_ipc_true",
-          "match": "hostIPC: true"
-        },
-        {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -28221,16 +28014,8 @@
           "match": "hostPID: true"
         },
         {
-          "rule": "host_ipc_true",
-          "match": "hostIPC: true"
-        },
-        {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -28659,10 +28444,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_ipc_true",
-          "match": "hostIPC: true"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -29061,15 +28842,10 @@
   },
   {
     "file_name": "examples___archived_storage_vitess_vtctld-controller-template.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -29096,15 +28872,10 @@
   },
   {
     "file_name": "examples___archived_storage_vitess_vttablet-pod-template.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -29140,10 +28911,6 @@
         {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -29171,10 +28938,6 @@
         {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -29546,10 +29309,6 @@
         {
           "rule": "privileged_true",
           "match": "privileged: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -30535,15 +30294,10 @@
   },
   {
     "file_name": "helm-charts__charts_kube-prometheus-stack_charts_crds_crds_crd-alertmanagers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -30580,15 +30334,10 @@
   },
   {
     "file_name": "helm-charts__charts_kube-prometheus-stack_charts_crds_crds_crd-prometheusagents.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -30605,15 +30354,10 @@
   },
   {
     "file_name": "helm-charts__charts_kube-prometheus-stack_charts_crds_crds_crd-prometheuses.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -30660,15 +30404,10 @@
   },
   {
     "file_name": "helm-charts__charts_kube-prometheus-stack_charts_crds_crds_crd-thanosrulers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -30695,15 +30434,10 @@
   },
   {
     "file_name": "k8s-monitoring-helm__charts_k8s-monitoring-v1_docs_examples_logs-journal_output.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -30748,15 +30482,10 @@
   },
   {
     "file_name": "k8s-monitoring-helm__charts_k8s-monitoring-v1_docs_examples_logs-only_output.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -30826,10 +30555,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -31046,10 +30771,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -31260,10 +30981,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -31522,10 +31239,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -31656,10 +31369,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -31806,10 +31515,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -32108,10 +31813,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -32203,10 +31904,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -32310,10 +32007,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -32472,10 +32165,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -32527,10 +32216,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -32582,10 +32267,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -32637,10 +32318,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -32737,10 +32414,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -33135,10 +32808,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -33480,15 +33149,10 @@
   },
   {
     "file_name": "k8s-monitoring-helm__charts_k8s-monitoring_docs_examples_features_node-logs_default_test_test-plan.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -33839,10 +33503,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -33981,10 +33641,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34116,10 +33772,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34195,10 +33847,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34361,10 +34009,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34430,10 +34074,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34508,10 +34148,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34616,10 +34252,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34689,10 +34321,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34800,10 +34428,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34907,10 +34531,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -34985,10 +34605,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -35081,10 +34697,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -35239,10 +34851,6 @@
         {
           "rule": "host_network_true",
           "match": "hostNetwork: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -35272,10 +34880,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -35354,10 +34958,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -35474,10 +35074,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -35608,10 +35204,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -35724,10 +35316,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -35875,10 +35463,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -36009,10 +35593,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -36087,10 +35667,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -36165,10 +35741,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -36283,10 +35855,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -36365,10 +35933,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -36783,10 +36347,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -36857,10 +36417,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -37002,10 +36558,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -37373,10 +36925,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -37489,10 +37037,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -37956,10 +37500,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -38063,10 +37603,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -38285,10 +37821,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -38392,10 +37924,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -38485,10 +38013,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -38846,10 +38370,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -39024,10 +38544,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -39182,10 +38698,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -39336,10 +38848,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -39472,10 +38980,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -39579,10 +39083,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -39741,10 +39241,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -39873,10 +39369,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -40243,10 +39735,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -40430,10 +39918,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -40891,10 +40375,6 @@
         {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -40963,15 +40443,10 @@
   },
   {
     "file_name": "kube-linter__tests_checks_host-ipc.yml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_ipc_true",
-          "match": "hostIPC: true"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -41328,30 +40803,20 @@
   },
   {
     "file_name": "kube-linter__tests_checks_sensitive-host-mounts.yml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "kube-linter__tests_checks_sorted-keys.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": [
         {
@@ -41456,15 +40921,10 @@
   },
   {
     "file_name": "kube-linter__tests_checks_writable-host-mount.yml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -43516,15 +42976,10 @@
   },
   {
     "file_name": "kubernetes-native-testbed__manifests_infra_loki_loki.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 16,
@@ -43751,10 +43206,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [
@@ -43990,15 +43441,10 @@
   },
   {
     "file_name": "kubernetes-native-testbed__manifests_infra_prometheus-operator_prometheus-operator.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -44035,15 +43481,10 @@
   },
   {
     "file_name": "kubernetes-native-testbed__manifests_infra_rook_ceph.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "HostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 2,
@@ -44148,14 +43589,6 @@
         {
           "rule": "host_pid_true",
           "match": "hostPID: true"
-        },
-        {
-          "rule": "host_ipc_true",
-          "match": "hostIPC: true"
-        },
-        {
-          "rule": "host_path",
-          "match": "HostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -44263,10 +43696,6 @@
         {
           "rule": "docker_sock_mount",
           "match": "/var/run/docker.sock"
-        },
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
         }
       ],
       "hardcoded_secret_findings": [],
@@ -44885,15 +44314,10 @@
   },
   {
     "file_name": "kubernetes-native-testbed__manifests_system_redirect-to-cluster-dns-scripts.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -44994,15 +44418,10 @@
   },
   {
     "file_name": "kubernetes-native-testbed__tools_rook-data-deleter.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
@@ -45217,15 +44636,10 @@
   },
   {
     "file_name": "prometheus-operator__example_prometheus-operator-crd-full_monitoring.coreos.com_alertmanagers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -45262,15 +44676,10 @@
   },
   {
     "file_name": "prometheus-operator__example_prometheus-operator-crd-full_monitoring.coreos.com_prometheusagents.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -45287,15 +44696,10 @@
   },
   {
     "file_name": "prometheus-operator__example_prometheus-operator-crd-full_monitoring.coreos.com_prometheuses.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -45342,30 +44746,20 @@
   },
   {
     "file_name": "prometheus-operator__example_prometheus-operator-crd-full_monitoring.coreos.com_thanosrulers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }
   },
   {
     "file_name": "prometheus-operator__example_prometheus-operator-crd_monitoring.coreos.com_alertmanagers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -45402,15 +44796,10 @@
   },
   {
     "file_name": "prometheus-operator__example_prometheus-operator-crd_monitoring.coreos.com_prometheusagents.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -45427,15 +44816,10 @@
   },
   {
     "file_name": "prometheus-operator__example_prometheus-operator-crd_monitoring.coreos.com_prometheuses.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "hardcoded_secret",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [
         {
           "doc_index": 0,
@@ -45482,15 +44866,10 @@
   },
   {
     "file_name": "prometheus-operator__example_prometheus-operator-crd_monitoring.coreos.com_thanosrulers.yaml",
-    "predicted_label": "privilege_exposure",
+    "predicted_label": "secure",
     "parse_error": null,
     "findings": {
-      "privilege_findings": [
-        {
-          "rule": "host_path",
-          "match": "hostPath:"
-        }
-      ],
+      "privilege_findings": [],
       "hardcoded_secret_findings": [],
       "safe_secret_references": []
     }

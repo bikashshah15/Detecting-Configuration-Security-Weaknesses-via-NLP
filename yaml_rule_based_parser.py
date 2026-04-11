@@ -9,14 +9,11 @@ SRC_DIR = "k8s_yaml_only"
 OUT_JSON = "rule_based_report.json"
 
 PRIVILEGE_REGEX_RULES = {
-    "privileged_true": r"privileged\s*:\s*true",
-    "allow_privilege_escalation_true": r"allowPrivilegeEscalation\s*:\s*true",
-    "run_as_non_root_false": r"runAsNonRoot\s*:\s*false",
-    "host_network_true": r"hostNetwork\s*:\s*true",
-    "host_pid_true": r"hostPID\s*:\s*true",
-    "host_ipc_true": r"hostIPC\s*:\s*true",
-    "docker_sock_mount": r"/var/run/docker\.sock",
-    "host_path": r"hostPath\s*:",
+   "privileged_true": r"privileged\s*:\s*true",
+   "allow_privilege_escalation_true": r"allowPrivilegeEscalation\s*:\s*true",
+   "host_network_true": r"hostNetwork\s*:\s*true",
+   "host_pid_true": r"hostPID\s*:\s*true",
+   "docker_sock_mount": r"/var/run/docker\.sock",
 }
 
 SECRET_LIKE_KEY_PATTERN = re.compile(
