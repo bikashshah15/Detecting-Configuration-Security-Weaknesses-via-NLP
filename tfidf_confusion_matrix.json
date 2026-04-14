@@ -1,0 +1,74 @@
+{
+  "logistic_regression": {
+    "labels": [
+      "hardcoded_secret",
+      "privilege_exposure",
+      "secure"
+    ],
+    "matrix": [
+      [
+        72,
+        0,
+        7
+      ],
+      [
+        0,
+        32,
+        0
+      ],
+      [
+        21,
+        4,
+        454
+      ]
+    ]
+  },
+  "linear_svm": {
+    "labels": [
+      "hardcoded_secret",
+      "privilege_exposure",
+      "secure"
+    ],
+    "matrix": [
+      [
+        66,
+        0,
+        13
+      ],
+      [
+        2,
+        29,
+        1
+      ],
+      [
+        8,
+        1,
+        470
+      ]
+    ]
+  },
+  "random_forest": {
+    "labels": [
+      "hardcoded_secret",
+      "privilege_exposure",
+      "secure"
+    ],
+    "matrix": [
+      [
+        61,
+        0,
+        18
+      ],
+      [
+        0,
+        28,
+        4
+      ],
+      [
+        5,
+        1,
+        473
+      ]
+    ]
+  }
+}
