@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: newrelic-infra-agent
+  labels:
+    tier: monitoring
+    app: newrelic-infra-agent
+    version: v1
+spec:
+  hostPID: false
+  hostIPC: false
+  hostNetwork: false
+  containers:
+    - name: newrelic
+      image: newrelic/infrastructure
+      command: ["bash", "-c", "source /etc/kube-nr-infra/config && /usr/bin/newrelic-infra"]
+      resources:
+        requests:
+          cpu: "0.15"
+      securityContext:
+        privileged: false
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        capabilities:
+          drop: ["ALL"]
+      volumeMounts:
+        - name: newrelic-config
+          mountPath: /etc/kube-nr-infra
+          readOnly: true
+  volumes:
+    - name: newrelic-config
+      secret:
+        secretName: newrelic-config

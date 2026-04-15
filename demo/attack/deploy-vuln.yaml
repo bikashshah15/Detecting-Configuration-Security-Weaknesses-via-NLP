@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: attack1-vuln
+spec:
+  hostPID: true
+  hostIPC: true
+  hostNetwork: true
+  containers:
+    - name: attacker
+      image: ubuntu:22.04
+      command: ["sleep", "infinity"]
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - name: run
+          mountPath: /var/run/docker.sock
+        - name: log
+          mountPath: /var/log
+        - name: host-root
+          mountPath: /host
+  volumes:
+    - name: run
+      hostPath:
+        path: /var/run/docker.sock
+    - name: log
+      hostPath:
+        path: /var/log
+    - name: host-root
+      hostPath:
+        path: /
