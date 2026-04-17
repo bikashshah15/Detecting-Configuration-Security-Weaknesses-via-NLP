@@ -1,0 +1,90 @@
+{
+  "input_report_summary": {
+    "total_files": 2949,
+    "flagged_files": 559,
+    "clean_files": 2390,
+    "by_label": {
+      "privilege_exposure": 161,
+      "hardcoded_secret": 398,
+      "secure": 2390
+    },
+    "by_severity": {
+      "CRITICAL": 55,
+      "HIGH": 48,
+      "MEDIUM": 397,
+      "NONE": 2449
+    },
+    "total_privilege_findings": 232,
+    "total_hardcoded_secret_findings": 1366
+  },
+  "evaluation_summary": {
+    "num_ground_truth_files": 2949,
+    "num_prediction_files": 2949,
+    "num_aligned_files": 2949,
+    "num_label_mismatches": 37,
+    "num_missing_predictions": 0,
+    "num_missing_ground_truth": 0,
+    "accuracy": 0.9875
+  },
+  "labels": [
+    "hardcoded_secret",
+    "privilege_exposure",
+    "secure"
+  ],
+  "per_class_metrics": {
+    "hardcoded_secret": {
+      "precision": 0.9573,
+      "recall": 0.9621,
+      "f1": 0.9597,
+      "support": 396,
+      "tp": 381,
+      "fp": 17,
+      "fn": 15
+    },
+    "privilege_exposure": {
+      "precision": 0.9752,
+      "recall": 0.9874,
+      "f1": 0.9812,
+      "support": 159,
+      "tp": 157,
+      "fp": 4,
+      "fn": 2
+    },
+    "secure": {
+      "precision": 0.9933,
+      "recall": 0.9916,
+      "f1": 0.9925,
+      "support": 2394,
+      "tp": 2374,
+      "fp": 16,
+      "fn": 20
+    }
+  },
+  "macro_avg": {
+    "precision": 0.9753,
+    "recall": 0.9804,
+    "f1": 0.9778
+  },
+  "weighted_avg": {
+    "precision": 0.9875,
+    "recall": 0.9874,
+    "f1": 0.9875
+  },
+  "confusion_matrix": {
+    "hardcoded_secret": {
+      "hardcoded_secret": 381,
+      "privilege_exposure": 0,
+      "secure": 15
+    },
+    "privilege_exposure": {
+      "hardcoded_secret": 1,
+      "privilege_exposure": 157,
+      "secure": 1
+    },
+    "secure": {
+      "hardcoded_secret": 16,
+      "privilege_exposure": 4,
+      "secure": 2374
+    }
+  }
+}
