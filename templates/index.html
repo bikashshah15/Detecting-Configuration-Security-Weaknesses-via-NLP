@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hybrid YAML Security Detector</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">Hybrid Detection Pipeline</p>
+      <h1>Scan Kubernetes YAML for risky privilege settings and hardcoded secrets.</h1>
+      <p class="hero-copy">
+        Upload a YAML file or paste one directly. The app prints the manifest, runs a hybrid detector,
+        highlights affected lines, and shows the resulting severity.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="panel input-panel">
+        <h2>Submit YAML</h2>
+        <form method="post" enctype="multipart/form-data" class="yaml-form">
+          <label class="field-label" for="yaml_file">Upload file</label>
+          <input id="yaml_file" name="yaml_file" type="file" accept=".yaml,.yml,text/yaml,text/x-yaml">
+
+          <label class="field-label" for="yaml_text">Or paste YAML</label>
+          <textarea id="yaml_text" name="yaml_text" placeholder="apiVersion: v1&#10;kind: Pod&#10;metadata:&#10;  name: demo">{{ result.submitted_yaml }}</textarea>
+
+          <button type="submit">Run Detection Pipeline</button>
+        </form>
+
+        {% if error_message %}
+          <div class="alert error">{{ error_message }}</div>
+        {% endif %}
+
+        {% if result.final_label %}
+          <div class="status-grid">
+            <article class="status-card">
+              <span class="status-label">Final Label</span>
+              <strong>{{ result.final_label.replace('_', ' ') }}</strong>
+            </article>
+            <article class="status-card">
+              <span class="status-label">Severity</span>
+              <strong class="severity severity-{{ result.final_severity|lower }}">{{ result.final_severity }}</strong>
+            </article>
+            <article class="status-card">
+              <span class="status-label">Source</span>
+              <strong>{{ result.file_name }}</strong>
+            </article>
+            <article class="status-card">
+              <span class="status-label">NLP Label</span>
+              <strong>{{ result.label_from_nlp }}</strong>
+            </article>
+          </div>
+        {% endif %}
+
+        {% if result.parse_error %}
+          <div class="alert warning">
+            YAML parsing failed: {{ result.parse_error }}
+          </div>
+        {% endif %}
+      </section>
+
+      <div class="right-column">
+        <section class="panel findings-panel">
+          <div class="section-heading">
+            <h2>Detected Findings</h2>
+            {% if result.line_annotations %}
+              <span class="pill">{{ result.line_annotations|length }} highlighted region{{ '' if result.line_annotations|length == 1 else 's' }}</span>
+            {% endif %}
+          </div>
+
+          {% if result.privilege_findings or result.hardcoded_secret_findings %}
+            <div class="finding-list">
+              {% for finding in result.privilege_findings %}
+                <article class="finding-card">
+                  <div class="finding-topline">
+                    <span class="pill severity-{{ finding.severity|lower }}">{{ finding.severity }}</span>
+                    <span class="finding-kind">{{ finding.type.replace('_', ' ') }}</span>
+                    {% if finding.start_line %}
+                      <span class="finding-line">Line {{ finding.start_line }}</span>
+                    {% endif %}
+                  </div>
+                  <p>{{ finding.evidence }}</p>
+                  {% if finding.reasoning %}
+                    <p class="finding-explainer"><strong>Reasoning:</strong> {{ finding.reasoning }}</p>
+                  {% endif %}
+                  {% if finding.consequences %}
+                    <div class="finding-subsection">
+                      <p class="subsection-label">Consequences</p>
+                      <ul class="compact-list">
+                        {% for item in finding.consequences %}
+                          <li>{{ item }}</li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% endif %}
+                </article>
+              {% endfor %}
+
+              {% for finding in result.hardcoded_secret_findings %}
+                <article class="finding-card">
+                  <div class="finding-topline">
+                    <span class="pill severity-{{ finding.severity|lower }}">{{ finding.severity }}</span>
+                    <span class="finding-kind">hardcoded secret</span>
+                    {% if finding.start_line %}
+                      <span class="finding-line">Line {{ finding.start_line }}</span>
+                    {% endif %}
+                  </div>
+                  <p><code>{{ finding.key }}</code> has a literal value.</p>
+                  <p class="reasons">Reasons: {{ finding.reasons|join(', ') }}</p>
+                  {% if finding.reasoning %}
+                    <p class="finding-explainer"><strong>Reasoning:</strong> {{ finding.reasoning }}</p>
+                  {% endif %}
+                  {% if finding.consequences %}
+                    <div class="finding-subsection">
+                      <p class="subsection-label">Consequences</p>
+                      <ul class="compact-list">
+                        {% for item in finding.consequences %}
+                          <li>{{ item }}</li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% endif %}
+                </article>
+              {% endfor %}
+            </div>
+          {% elif result.final_label %}
+            <div class="empty-state">No highlighted findings were detected in the submitted YAML.</div>
+          {% else %}
+            <div class="empty-state">Your findings will appear here after you submit a YAML manifest.</div>
+          {% endif %}
+        </section>
+
+        <section class="panel remediation-panel">
+          <div class="section-heading">
+            <h2>Remediation Available</h2>
+            {% if result.privilege_findings or result.hardcoded_secret_findings %}
+              <span class="pill">Actionable fixes</span>
+            {% endif %}
+          </div>
+
+          {% if result.privilege_findings or result.hardcoded_secret_findings %}
+            <div class="finding-list">
+              {% for finding in result.privilege_findings %}
+                <article class="finding-card remediation-card">
+                  <div class="finding-topline">
+                    <span class="pill severity-{{ finding.severity|lower }}">{{ finding.severity }}</span>
+                    <span class="finding-kind">{{ finding.type.replace('_', ' ') }}</span>
+                    {% if finding.start_line %}
+                      <span class="finding-line">Line {{ finding.start_line }}</span>
+                    {% endif %}
+                  </div>
+                  {% if finding.remediation %}
+                    <ul class="remediation-list">
+                      {% for step in finding.remediation %}
+                        <li>{{ step }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </article>
+              {% endfor %}
+
+              {% for finding in result.hardcoded_secret_findings %}
+                <article class="finding-card remediation-card">
+                  <div class="finding-topline">
+                    <span class="pill severity-{{ finding.severity|lower }}">{{ finding.severity }}</span>
+                    <span class="finding-kind">hardcoded secret</span>
+                    {% if finding.start_line %}
+                      <span class="finding-line">Line {{ finding.start_line }}</span>
+                    {% endif %}
+                  </div>
+                  {% if finding.remediation %}
+                    <ul class="remediation-list">
+                      {% for step in finding.remediation %}
+                        <li>{{ step }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </article>
+              {% endfor %}
+            </div>
+          {% elif result.final_label %}
+            <div class="empty-state">No remediation steps are needed because no actionable findings were detected.</div>
+          {% else %}
+            <div class="empty-state">Remediation guidance will appear here after a scan finds an issue.</div>
+          {% endif %}
+        </section>
+      </div>
+
+      <section class="panel yaml-panel">
+        <div class="section-heading">
+          <h2>Submitted YAML</h2>
+          {% if result.final_severity %}
+            <span class="pill severity-{{ result.final_severity|lower }}">{{ result.final_severity }}</span>
+          {% endif %}
+        </div>
+
+        {% if result.highlighted_lines %}
+          <div class="yaml-viewer">
+            {% for line in result.highlighted_lines %}
+              <div class="yaml-line severity-{{ line.severity|lower }}">
+                <span class="line-number">{{ line.line_number }}</span>
+                <div class="line-main">
+                  <code class="line-content">{{ line.text or ' ' }}</code>
+                  {% if line.matches %}
+                    <button
+                      type="button"
+                      class="info-toggle"
+                      aria-expanded="false"
+                      aria-label="Show suggested code changes for line {{ line.line_number }}"
+                    >
+                      i
+                    </button>
+                  {% endif %}
+                </div>
+              </div>
+              {% if line.matches %}
+                <div class="line-suggestion-panel" hidden>
+                  {% for match in line.matches %}
+                    <div class="suggestion-block">
+                      <div class="finding-topline">
+                        <span class="pill severity-{{ match.severity|lower }}">{{ match.severity }}</span>
+                        <span class="finding-kind">{{ match.type.replace('_', ' ') }}</span>
+                      </div>
+                      {% if match.evidence %}
+                        <p class="suggestion-evidence"><code>{{ match.evidence }}</code></p>
+                      {% endif %}
+                      {% if match.reasoning %}
+                        <p class="finding-explainer"><strong>Reasoning:</strong> {{ match.reasoning }}</p>
+                      {% endif %}
+                      {% if match.consequences %}
+                        <div class="finding-subsection">
+                          <p class="subsection-label">Consequences</p>
+                          <ul class="compact-list">
+                            {% for item in match.consequences %}
+                              <li>{{ item }}</li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      {% endif %}
+                      {% if match.suggested_code_changes %}
+                        <div class="finding-subsection">
+                          <p class="subsection-label">Suggested Changes</p>
+                          <ul class="remediation-list compact-list">
+                            {% for step in match.suggested_code_changes %}
+                              <li>{{ step }}</li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="empty-state yaml-empty">The submitted YAML will be printed here with highlighted findings.</div>
+        {% endif %}
+      </section>
+    </main>
+  </div>
+  <script>
+    document.querySelectorAll('.info-toggle').forEach((button) => {
+      button.addEventListener('click', () => {
+        const panel = button.closest('.yaml-line').nextElementSibling;
+        if (!panel || !panel.classList.contains('line-suggestion-panel')) {
+          return;
+        }
+
+        const isHidden = panel.hasAttribute('hidden');
+        if (isHidden) {
+          panel.removeAttribute('hidden');
+          button.setAttribute('aria-expanded', 'true');
+        } else {
+          panel.setAttribute('hidden', '');
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

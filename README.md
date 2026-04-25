@@ -18,6 +18,7 @@ It also includes evaluation scripts, merged reporting, and demo manifests that s
 
 ### Main scripts
 
+- `app.py`: Flask web app for uploading or pasting YAML and viewing interactive detection results
 - `clone_repos.sh`: clones repositories listed in `repos.txt`
 - `extract_yaml.sh`: extracts `.yaml` and `.yml` files from cloned repositories
 - `filter_k8s_yaml.py`: keeps only Kubernetes manifests
@@ -47,6 +48,8 @@ It also includes evaluation scripts, merged reporting, and demo manifests that s
 - `hybrid_detection_report.json`: generated output from the hybrid detection pipeline
 - `hybrid_pipeline_metrics.json`: full-dataset evaluation metrics for the generated hybrid pipeline report
 - `hybrid_pipeline_mismatches.csv`: mislabeled or missing items from hybrid pipeline evaluation
+- `templates/index.html`: main HTML template for the Flask UI
+- `static/styles.css`: styling for the Flask UI
 
 ## Detection Scope
 
@@ -80,7 +83,27 @@ Install Python dependencies:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install pyyaml pandas numpy scikit-learn
+pip install pyyaml pandas numpy scikit-learn flask
+```
+
+## Quick Start
+
+If you want the fastest path to the interactive UI:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install pyyaml pandas numpy scikit-learn flask
+python3 app.py
+```
+
+Then open `http://127.0.0.1:5000` in your browser.
+
+If you want the batch hybrid detector instead:
+
+```bash
+python3 hybrid_detection_pipeline.py
 ```
 
 ## Important Notes Before Running
@@ -248,6 +271,8 @@ This pipeline:
 - uses the NLP model for text classification
 - combines both into a final label and severity
 - reports hardcoded secret findings and safe Kubernetes secret references
+- attaches reasoning and likely consequences for each detected issue
+- includes remediation guidance for both privilege findings and hardcoded secrets
 
 ### 12. Evaluate the generated hybrid pipeline report
 
@@ -263,6 +288,52 @@ Outputs:
 - `hybrid_pipeline_mismatches.csv`
 
 This evaluates the generated pipeline predictions directly against the dataset labels.
+
+## Web UI
+
+This repository includes a Flask UI in `app.py` for interactive YAML scanning.
+
+Start it with:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install pyyaml pandas numpy scikit-learn flask
+python3 app.py
+```
+
+Then open `http://127.0.0.1:5000` in your browser.
+
+The UI lets you:
+
+- upload a `.yaml` or `.yml` file
+- paste YAML into a text area
+- run the hybrid detection pipeline on submission
+- view the submitted YAML with highlighted affected lines
+- inspect the final label, severity, and detected findings
+- view remediation guidance for each finding
+- read the reasoning and likely consequences of each issue
+- click the small info icon beside highlighted YAML lines to see suggested code changes
+
+### How the interactive UI works
+
+1. Provide YAML by upload or paste.
+2. Submit the manifest from the form.
+3. The app runs the same hybrid detection logic used by `hybrid_detection_pipeline.py`.
+4. The UI shows:
+
+- the submitted YAML with highlighted lines
+- a `Detected Findings` panel
+- a `Remediation Available` panel
+- expandable line-level suggestions from the info icon
+
+### Files used by the UI
+
+- `app.py`
+- `templates/index.html`
+- `static/styles.css`
+- `hybrid_detection_pipeline.py`
 
 ## Quick Demo
 
@@ -457,6 +528,7 @@ Based on the results, `linear_svm` is the strongest of the three on the held-out
 ```text
 .
 ├── README.md
+├── app.py
 ├── clone_repos.sh
 ├── extract_yaml.sh
 ├── filter_k8s_yaml.py
@@ -469,6 +541,10 @@ Based on the results, `linear_svm` is the strongest of the three on the held-out
 ├── comparison_evaluation.py
 ├── hybrid_detection_pipeline.py
 ├── hybrid_pipeline_evaluation.py
+├── static/
+│   └── styles.css
+├── templates/
+│   └── index.html
 ├── demo/
 │   └── attack/
 │       ├── vulnerable.yaml
@@ -486,6 +562,7 @@ This repository provides a complete mini-pipeline for:
 - classifying YAMLs with NLP/ML
 - comparing rule-based, NLP, and hybrid strategies
 - evaluating the generated hybrid detection pipeline report
+- interactively inspecting YAML findings in a browser UI
 
 If you want the fastest path through the project, run the workflow in this order:
 
